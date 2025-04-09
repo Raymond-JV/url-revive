@@ -103,7 +103,6 @@ def add_general_options(parser):
         help='Exclude duplicate URLs',
     )
 
-
 def parse_args():
     parser = argparse.ArgumentParser()
     add_input_options(parser)
