@@ -1,0 +1,61 @@
+[default]
+archives_cdx_api = 'http://web.archive.org/cdx/search/cdx'
+archives_web_api = 'https://web.archive.org/web'
+memento_api = 'http://timetravel.mementoweb.org/timemap/json'
+default_fetch_limit = 1
+connect_timeout = 5
+read_timeout = 15
+
+# https://github.com/GLAM-Workbench/web-archives/blob/e84fa145eb0a97efabfad69a8cd12e7d35ed6f4c//find_all_captures.ipynb 
+# https://github.com/brevityinmotion/straylight/blob/main/notebooks/tools-commoncrawl.ipynb
+
+[[archives]]
+name = 'new york library'
+json = 'https://wayback.library.yorku.ca/all/timemap/json'
+link = 'https://wayback.library.yorku.ca/all/timemap/link'
+
+[[archives]]
+name = 'stanford'
+json = 'https://swap.stanford.edu/was/timemap/json'
+link = 'https://swap.stanford.edu/was/timemap/link'
+
+[[archives]]
+name = 'it'
+json = 'http://wayback.archive-it.org/all/timemap/json'
+link = 'http://wayback.archive-it.org/all/timemap/link'
+
+[[archives]]
+name = 'is'
+link = 'https://archive.is/timemap'
+
+[[archives]]
+name = 'web archive'
+json = 'https://web.archive.org/web/timemap/json'
+link = 'https://web.archive.org/web/timemap/link'
+
+[[archives]]
+name = 'loc gov'
+link = 'https://webarchive.loc.gov/all/timemap/json'
+
+[[archives]]
+name = 'perma links'
+json = 'https://perma.cc/timemap/json'
+link = 'https://perma.cc/timemap/link'
+
+[[archives]]
+name = 'arquivo'
+json = 'https://arquivo.pt/wayback/timemap/json'
+link = 'https://arquivo.pt/wayback/timemap/link'
+
+[[archives]]
+name = 'national library and archives of quebec'
+link = 'https://waext.banq.qc.ca/wayback/timemap/link'
+
+# Might be used in the future to enhance support for foreign sites 
+#  
+# https://warp.da.ndl.go.jp/collections/timemap/ 
+# https://haw.nsk.hr/wayback/timemap 
+# http://wayback.vefsafn.is/wayback/timemap/link 
+# https://www.nationalarchives.gov.uk/webarchive/find-a-website/atoz/  massive UK DB 
+#  
+
