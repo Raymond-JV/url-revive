@@ -1,0 +1,82 @@
+[network] #rates per second
+default_fetch_limit = 1
+connect_timeout = 45
+read_timeout = 60
+wayback_api_limit = 1 
+
+[wayback]
+api_cdx = 'http://web.archive.org/cdx/search/cdx'
+api_web = 'https://web.archive.org/web'
+status_key = 'statuscode'
+output_format = 'csv'
+
+[memento]
+json='timemap/json'
+
+[[memento.archives]]
+name = 'arquivo'
+host = 'https://arquivo.pt/wayback'
+output_format = 'jsonl'
+status_key = 'status'
+enabled = true
+
+[[memento.archives]]
+name = 'is'
+host = 'https://archive.is/timemap'
+enabled =  false
+
+[[memento.archives]]
+name = 'wayback-it'
+host = 'http://wayback.archive-it.org/all'
+output_format = 'csv'
+status_key = 'statuscode'
+enabled =  true
+
+[[memento.archives]]
+name = 'web-archive-gov'
+host = 'https://webarchive.loc.gov/all'
+output_format = 'csv'
+status_key = 'status'
+enabled =  false
+
+[[memento.archives]]
+name = 'national library and archives of quebec'
+host = 'https://waext.banq.qc.ca/wayback/timemap/link'
+enabled =  false
+
+[[memento.archives]]
+name = 'new-york-library'
+host = 'https://wayback.library.yorku.ca/all'
+output_format = 'json'
+enabled =  false 
+
+[[memento.archives]]
+name = 'perma-links'
+host = 'https://perma.cc'
+output_format = 'json'
+enabled =  false
+
+[[memento.archives]]
+name = 'stanford'
+host = 'https://swap.stanford.edu/was'
+output_format = 'jsonl'
+status_key = 'status'
+enabled =  true
+
+[[memento.archives]]
+name = 'web-archive'
+host = 'https://web.archive.org/web'
+output_format = 'csv'
+status_key = 'statuscode'
+enabled =  true
+
+# https://github.com/GLAM-Workbench/web-archives/blob/e84fa145eb0a97efabfad69a8cd12e7d35ed6f4c//find_all_captures.ipynb 
+# https://github.com/brevityinmotion/straylight/blob/main/notebooks/tools-commoncrawl.ipynb
+
+# Might be used in the future to enhance support for foreign sites 
+#  
+# https://warp.da.ndl.go.jp/collections/timemap/ 
+# https://haw.nsk.hr/wayback/timemap 
+# http://wayback.vefsafn.is/wayback/timemap/link 
+# https://www.nationalarchives.gov.uk/webarchive/find-a-website/atoz/  massive UK DB 
+#  
