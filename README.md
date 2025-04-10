@@ -9,7 +9,7 @@ Bring those dead links back to life.
 This tool prioritizes simplicity and is designed to fetch records for links from various internet archives. 
 Security researchers can use it to find secrets like exposed API keys or hidden endpoints.
 
-It provides fine grained controls for matching status codes and limiting results, thus ensuring fast queries. 
+It provides filters for matching status codes and limiting results, thus ensuring fast queries. 
 Default mode is the most flexible and uses Wayback Machine, while Memento mode is slower but capable of searching additional archives.
 Another mode is planned for a future release, so stay tuned!
 
