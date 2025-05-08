@@ -56,6 +56,7 @@ def fetch_memento_snapshots(url, limit, match_codes):
         except Exception as e:  
             logging.error(f'Failed to parse response from archive, error - {e}')
             yield []
+            continue
         snapshots = []
         for entry in json_data:
             timestamp = entry['timestamp']
