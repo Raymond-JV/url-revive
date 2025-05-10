@@ -53,19 +53,18 @@ def fetch_memento_snapshots(url, limit, match_codes):
         output_type = ArchiveFormat(archive.OUTPUT_FORMAT)
         try:
             json_data = format_data_to_json(response, output_type)
+            snapshots = []
+            for entry in json_data:
+                timestamp = entry['timestamp']
+                snapshot_url = f'{archive.host}/{timestamp}/{url}'
+                snapshot = Snapshot(snapshot_url, entry[archive.status_key])
+                snapshots.append(snapshot)
+            if match_codes:
+                snapshots = [snap for snap in snapshots if snap.status in match_codes]
+            yield snapshots[:limit]
         except Exception as e:  
             logging.error(f'Failed to parse response from archive, error - {e}')
             yield []
-            continue
-        snapshots = []
-        for entry in json_data:
-            timestamp = entry['timestamp']
-            snapshot_url = f'{archive.host}/{timestamp}/{url}'
-            snapshot = Snapshot(snapshot_url, entry[archive.status_key])
-            snapshots.append(snapshot)
-        if match_codes:
-            snapshots = [snap for snap in snapshots if snap.status in match_codes]
-        yield snapshots[:limit]
 
 def fetch_cdx_snapshots(url, limit, match_codes, raw=False, unique=False):
     request_throttler = RequestThrottler(1)
@@ -85,15 +84,15 @@ def fetch_cdx_snapshots(url, limit, match_codes, raw=False, unique=False):
     try:
         data = response.json()
         json_data = json_csv_to_json(data)
+        snapshots = []
+        for entry in json_data:
+            snapshot_url = parse_snapshot(entry, settings.wayback.api_web, raw=raw) 
+            snapshot = Snapshot(snapshot_url, entry[settings.wayback.status_key])
+            snapshots.append(snapshot)
+        yield snapshots
     except Exception as e:  
         logging.error('Failed to parse response from wayback archive')
         return []
-    snapshots = []
-    for entry in json_data:
-        snapshot_url = parse_snapshot(entry, settings.wayback.api_web, raw=raw) 
-        snapshot = Snapshot(snapshot_url, entry[settings.wayback.status_key])
-        snapshots.append(snapshot)
-    yield snapshots
 
 def main():
     url = sys.argv[1]
